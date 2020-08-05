@@ -16,11 +16,11 @@ public class SslOneWayServerInitializer extends ChannelInitializer<SocketChannel
 	protected void initChannel(SocketChannel sc) throws Exception {
 		ChannelPipeline pipeline = sc.pipeline();
 		String sChatPath = (System.getProperty("user.dir")+ "/src/main/java/com/zhaozhou/netty/demo/ssl/conf/oneway/serverStore.jks");
-		
+
 		SSLEngine engine = SslOneWayContextFactory.getServerContext(sChatPath).createSSLEngine();
 		engine.setUseClientMode(false);//设置为服务器模式
 		//engine.setNeedClientAuth(false);//不需要客户端认证，默认为false，故不需要写这行。
-		
+
 		pipeline.addLast("ssl", new SslHandler(engine));
 
 		// On top of the SSL handler, add the text line codec.
