@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aadbc119-a9b8-426d-98bb-52bfb7134684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayServerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayServerInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,42 +16,51 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="110" column="25" lean-forward="true" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/src.zip!/java/security/KeyStore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="1444" selection-start-line="1444" selection-end-line="1444" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/security/provider/JavaKeyStore.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2841">
+              <caret line="381" selection-start-line="381" selection-end-line="381" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="33" column="17" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="33" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayClientHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayClientInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="702">
+              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SecureChatClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="35" column="31" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayServerInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="293">
@@ -71,17 +81,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+            <state relative-caret-position="540">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/javax/net/ssl/SSLEngine.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+            <state relative-caret-position="270">
+              <caret line="18" column="70" lean-forward="true" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -91,15 +101,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="621">
               <caret line="109" column="16" lean-forward="true" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/javax/net/ssl/KeyManager.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -119,9 +120,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/conf/说明" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayServerInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java" />
       </list>
     </option>
   </component>
@@ -137,7 +140,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
     <option name="y" value="108" />
     <option name="width" value="1551" />
@@ -263,19 +266,6 @@
               <item name="netty" type="462c0819:PsiDirectoryNode" />
               <item name="demo" type="462c0819:PsiDirectoryNode" />
               <item name="ssl" type="462c0819:PsiDirectoryNode" />
-              <item name="oneway" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NettyDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="netty-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="zhaozhou" type="462c0819:PsiDirectoryNode" />
-              <item name="netty" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="ssl" type="462c0819:PsiDirectoryNode" />
               <item name="twoway" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -327,7 +317,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1596614184113" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1596615898013" />
     <property name="last_opened_file_path" value="D:/Program Files/nodejs/node.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -391,19 +381,18 @@
       <updated>1596434332379</updated>
       <workItem from="1596434378516" duration="10137000" />
       <workItem from="1596504917176" duration="2703000" />
-      <workItem from="1596591374802" duration="4323000" />
+      <workItem from="1596591374802" duration="5912000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17163000" />
+    <option name="totallyTimeSpent" value="18752000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8426339" visible="true" weight="0.2489339" />
-      <window_info id="Structure" order="1" sideWeight="0.15736607" side_tool="true" visible="true" weight="0.2489339" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8404453" visible="true" weight="0.2489339" />
+      <window_info id="Structure" order="1" sideWeight="0.15955473" side_tool="true" visible="true" weight="0.2489339" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -411,7 +400,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.035714287" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3984375" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -461,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SecureChatClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -496,20 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -562,13 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85">
@@ -611,17 +572,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/oneway/SslOneWayServerInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayClientInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="70" lean-forward="true" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServerInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/jre/lib/rt.jar!/sun/security/provider/JavaKeyStore.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2841">
+          <caret line="381" selection-start-line="381" selection-end-line="381" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_201/src.zip!/java/security/KeyStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="1444" selection-start-line="1444" selection-end-line="1444" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayContextFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="110" column="25" lean-forward="true" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SslTwoWayServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zhaozhou/netty/demo/ssl/twoway/SecureChatClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="31" />
         </state>
       </provider>
     </entry>

@@ -12,21 +12,22 @@ import javax.net.ssl.SSLEngine;
 
 public class SslTwoWayClientInitializer extends ChannelInitializer<SocketChannel> {
 
-	@Override
-	protected void initChannel(SocketChannel ch) throws Exception {
-		ChannelPipeline pipeline = ch.pipeline();
-		String cChatPath =  System.getProperty("user.dir")+"/src/main/java/com/zhaozhou/netty/demo/ssl/conf/twoway/clientStore.jks";
-		
-		SSLEngine engine = SslTwoWayContextFactory.getClientContext(cChatPath,cChatPath).createSSLEngine();
-		engine.setUseClientMode(true);
-		pipeline.addLast("ssl", new SslHandler(engine));
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        ChannelPipeline pipeline = ch.pipeline();
+        String keystorePath = "f:/testOpenssl/node1/keystore.jks";
+        String truststorePath = "f:/testOpenssl/node1/truststore.jks";
 
-		// On top of the SSL handler, add the text line codec.
-		pipeline.addLast("framer", new LineBasedFrameDecoder(1024, false, false));
-		pipeline.addLast("decoder", new StringDecoder());
-		pipeline.addLast("encoder", new StringEncoder());
-		// and then business logic.
-		pipeline.addLast("handler", new SslTowWayClientHandler());
-	}
+        SSLEngine engine = SslTwoWayContextFactory.getClientContext(keystorePath, truststorePath).createSSLEngine();
+        engine.setUseClientMode(true);
+        pipeline.addLast("ssl", new SslHandler(engine));
+
+        // On top of the SSL handler, add the text line codec.
+        pipeline.addLast("framer", new LineBasedFrameDecoder(1024, false, false));
+        pipeline.addLast("decoder", new StringDecoder());
+        pipeline.addLast("encoder", new StringEncoder());
+        // and then business logic.
+        pipeline.addLast("handler", new SslTowWayClientHandler());
+    }
 
 }
