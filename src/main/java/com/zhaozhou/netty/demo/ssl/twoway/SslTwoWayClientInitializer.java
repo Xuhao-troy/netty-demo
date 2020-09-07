@@ -33,15 +33,16 @@ public class SslTwoWayClientInitializer extends ChannelInitializer<SocketChannel
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        String keystorePath = "f:/testOpenssl/node1/keystore.jks";
-        String truststorePath = "f:/testOpenssl/node1/truststore.jks";
+        String keystorePath = "f:/testOpenssl/node4-ed/keystore.jks";
+        String truststorePath = "f:/testOpenssl/node4-ed/truststore.jks";
+//        String truststorePath = "f:/testOpenssl/node4-ed/truststorewrong.jks";
 
-//        SSLEngine engine = SslTwoWayContextFactory.getClientContext(keystorePath, truststorePath).createSSLEngine();
-//        engine.setUseClientMode(true);
-//        pipeline.addLast("ssl", new SslHandler(engine));
+        SSLEngine engine = SslTwoWayContextFactory.getClientContext(keystorePath, truststorePath).createSSLEngine();
+        engine.setUseClientMode(true);
+        pipeline.addLast("ssl", new SslHandler(engine));
 
-        SslContext sslCtx = SslTwoWayContextFactory.getClientContextOpenSSL(keystorePath, truststorePath);
-        pipeline.addLast("ssl", sslCtx.newHandler(ch.alloc()));
+//        SslContext sslCtx = SslTwoWayContextFactory.getClientContextOpenSSL(keystorePath, truststorePath);
+//        pipeline.addLast("ssl", sslCtx.newHandler(ch.alloc()));
 
         // On top of the SSL handler, add the text line codec.
         pipeline.addLast("framer", new LineBasedFrameDecoder(1024, false, false));
