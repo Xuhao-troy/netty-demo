@@ -13,7 +13,7 @@ import io.netty.util.CharsetUtil;
 public class HttpRequestHandler extends SimpleChannelInboundHandler<HttpObject> {
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, HttpObject httpObject) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, HttpObject httpObject) throws Exception {
         if(httpObject instanceof HttpRequest){
             HttpRequest request = (HttpRequest) httpObject;
             System.out.println("接收到请求：  "+ request.method() + ",url=" + request.uri());

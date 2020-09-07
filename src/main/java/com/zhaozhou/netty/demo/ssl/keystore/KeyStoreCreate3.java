@@ -1,21 +1,17 @@
 package com.zhaozhou.netty.demo.ssl.keystore;
 
-
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemReader;
 import sun.security.tools.keytool.CertAndKeyGen;
 import sun.security.x509.X500Name;
 
-import java.io.*;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -25,7 +21,6 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Properties;
 
 /**
  * 类KeyStoreCreate.java的实现描述：
@@ -33,17 +28,16 @@ import java.util.Properties;
  * @author xuhao create on 2020/8/3 20:03
  */
 
-public class KeyStoreCreate {
+public class KeyStoreCreate3 {
 
 
     public static void main(String[] args) throws GeneralSecurityException, IOException {
         BouncyCastleProvider prov = new BouncyCastleProvider();
         Security.addProvider(prov);
-//        loadPubKeyFromFile();
-//        loadPubKeyFromNodeId();
+
 //        testSignAndVerify();
         loadFileAndCreateKeyStore();
-//        loadFileAndCreateTrustStore();
+        loadFileAndCreateTrustStore();
     }
 
     private static void createKeyStore() throws GeneralSecurityException {
@@ -95,27 +89,29 @@ public class KeyStoreCreate {
 //            char[] password = "123456".toCharArray();
             ks.load(null, null);
             //加载私钥
-            String keyPath = "f:\\testOpenssl\\node1\\node.key";
+            String keyPath = "f:\\testOpenssl\\node3-ed\\node.key";
             PrivateKey privateKey = loadPrivKeyFromFile(keyPath);
             //加载证书链
-            String nodeCertPath = "f:\\testOpenssl\\node1\\node.crt";
-            Certificate nodeCert = loadCertificateFromFile(nodeCertPath);
+            String nodeCertPath = "f:\\testOpenssl\\node3-ed\\node.crt";
+            Certificate nodeCert=loadCertificateFromFile(nodeCertPath);
 
-            String agencyCertPath = "f:\\testOpenssl\\node1\\agency.crt";
-            Certificate agencyCert = loadCertificateFromFile(agencyCertPath);
+            String agencyCertPath = "f:\\testOpenssl\\node3-ed\\agency.crt";
+            Certificate agencyCert=loadCertificateFromFile(agencyCertPath);
 
-            String caCertPath = "f:\\testOpenssl\\node1\\ca.crt";
-            Certificate caCert = loadCertificateFromFile(caCertPath);
+            String caCertPath = "f:\\testOpenssl\\node3-ed\\ca.crt";
+            Certificate caCert=loadCertificateFromFile(caCertPath);
 
             Certificate[] chain = new X509Certificate[3];
-            chain[2] = caCert;
-            chain[1] = agencyCert;
-            chain[0] = nodeCert;
+            //证书链组成：node -> agency -> ca
+            chain[0]=nodeCert;
+            chain[1]=agencyCert;
+            chain[2]=caCert;
+
             // store away the key store
 
-            String filePath = "f:\\testOpenssl\\node1\\keystore.jks";
-            String alias = "node1";
-            char[] keyPassword = "123456".toCharArray();
+            String filePath = "f:\\testOpenssl\\node3-ed\\keystore.jks";
+            String alias = "node3";
+            char[] keyPassword = "keyPassword".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setKeyEntry(alias, privateKey, keyPassword, chain);
             ks.store(fos, keyPassword);
@@ -139,13 +135,13 @@ public class KeyStoreCreate {
 //            char[] password = "123456".toCharArray();
             ks.load(null, null);
             //加载证书
-            String certPath = "f:\\testOpenssl\\ca2.crt";
-            Certificate cert = loadCertificateFromFile(certPath);
+            String certPath = "f:\\testOpenssl\\node3-ed\\ca.crt";
+            Certificate cert= loadCertificateFromFile(certPath);
             // store away the key store
 
-            String filePath = "f:\\testOpenssl\\truststore.jks";
-            String alias = "node2";
-            char[] keyPassword = "123456".toCharArray();
+            String filePath = "f:\\testOpenssl\\node3-ed\\truststore.jks";
+            String alias = "node3";
+            char[] keyPassword = "keyPassword".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setCertificateEntry(alias, cert);
             ks.store(fos, keyPassword);
@@ -168,11 +164,9 @@ public class KeyStoreCreate {
             PemReader pemReader = new PemReader(new InputStreamReader(fis));
             PemObject pemObject = pemReader.readPemObject();
             PKCS8EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(pemObject.getContent());
-            KeyFactory factory = KeyFactory.getInstance("ECDSA");
+            KeyFactory factory = KeyFactory.getInstance("ed25519");
             PrivateKey privateKey = factory.generatePrivate(privKeySpec);
 
-            BCECPrivateKey privkey = (BCECPrivateKey) privateKey;
-            System.out.println("privKey.d:" + privkey.getD());
             return privateKey;
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,14 +180,12 @@ public class KeyStoreCreate {
             FileInputStream fis = new FileInputStream(keyPath);
             PemReader pemReader = new PemReader(new InputStreamReader(fis));
             PemObject pemObject = pemReader.readPemObject();
-            System.out.println(Hex.toHexString(pemObject.getContent()));
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(pemObject.getContent());
             KeyFactory factory = KeyFactory.getInstance("ECDSA");
             PublicKey publicKey = factory.generatePublic(keySpec);
+
             BCECPublicKey pubKey = (BCECPublicKey) publicKey;
-            byte[] publicKeyBytes = pubKey.getQ().getEncoded(false);
-            String pubkeyStr = Hex.toHexString(publicKeyBytes);
-            System.out.println("pubkey:" + pubkeyStr);
+            System.out.println("pubkey:" + Arrays.toString(pubKey.getQ().getEncoded(false)));
 
             return publicKey;
         } catch (Exception e) {
@@ -202,38 +194,12 @@ public class KeyStoreCreate {
         return null;
     }
 
-
-    private static PublicKey loadPubKeyFromNodeId() {
-        try {
-            String filePath = "f:\\testOpenssl\\node1\\node.nodeid";
-            FileInputStream fis = new FileInputStream(filePath);
-            int length = fis.available();
-            byte[] publicKeyBytes = new byte[length + 2];
-            Strings.toByteArray("04", publicKeyBytes, 0);
-            fis.read(publicKeyBytes, 2, length);
-            System.out.println(Hex.toHexString(publicKeyBytes));
-            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
-            KeyFactory factory = KeyFactory.getInstance("ECDSA");
-            PublicKey publicKey = factory.generatePublic(keySpec);
-            BCECPublicKey pubKey = (BCECPublicKey) publicKey;
-            byte[] pubKeyBytes = pubKey.getQ().getEncoded(false);
-            String pubkeyStr = Hex.toHexString(pubKeyBytes);
-            System.out.println("pubkey:" + pubkeyStr);
-
-            return publicKey;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     private static Certificate loadCertificateFromFile(String filePath) {
         try {
             FileInputStream fis = new FileInputStream(filePath);
             CertificateFactory cf = CertificateFactory.getInstance("X.509", new BouncyCastleProvider());
             Certificate cert = cf.generateCertificate(fis);
-            System.out.println("cert:" + filePath);
-            addCertToPropFile(filePath);
 //            PublicKey publicKey = cert.getPublicKey();
 //            BCECPublicKey pubKey = (BCECPublicKey) publicKey;
 //            System.out.println("pubkey from cert:" + Arrays.toString(pubKey.getQ().getEncoded(false)));
@@ -244,32 +210,12 @@ public class KeyStoreCreate {
         return null;
     }
 
-    private static void addCertToPropFile(String filePath) {
-        Properties prop = new Properties();
-        String properitiesPath = "./cert.properties";
-        try {
-            try {
-                InputStream fis = new FileInputStream(properitiesPath);
-                prop.load(fis);
-            }catch (Exception e){}
-            Path path = Paths.get(filePath);
-            byte[] bytes = Files.readAllBytes(path);
-            String str = new String(bytes, "utf-8");
-            System.out.println(str);
-            prop.setProperty(filePath, str);
-            FileOutputStream fos = new FileOutputStream(properitiesPath);
-            prop.store(fos, "Upadate value");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private static void testSignAndVerify() {
         try {
             BouncyCastleProvider prov = new BouncyCastleProvider();
             Security.addProvider(prov);
             //1. 从文件中读取ECDSA公私钥
-            PrivateKey privateKey = loadPrivKeyFromFile("f:\\testOpenssl\\node1\\node.key");
+            PrivateKey privateKey = loadPrivKeyFromFile( "f:\\testOpenssl\\node1\\node.key");
             PublicKey publicKey = loadPubKeyFromFile();
             //2.签名验签
             //使用ECDSA进行签名和验签

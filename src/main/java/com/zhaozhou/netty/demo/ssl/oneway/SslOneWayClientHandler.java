@@ -6,7 +6,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 public class SslOneWayClientHandler extends SimpleChannelInboundHandler<String> {
 
 	 @Override
-    public void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.err.print("recv:" + msg);
     }
 

@@ -13,7 +13,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import java.net.InetAddress;
 
 public class SslTwoWayServerHandler extends SimpleChannelInboundHandler<String> {
-	
+
 	 static final ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 	@Override
@@ -30,16 +30,14 @@ public class SslTwoWayServerHandler extends SimpleChannelInboundHandler<String> 
 				ctx.writeAndFlush("Welcome to "+ InetAddress.getLocalHost().getHostName()+ " secure chat service!\n");
 				ctx.writeAndFlush("Your session is protected by "+ ctx.pipeline().get(SslHandler.class).engine().getSession().getCipherSuite()+ " cipher suite.\n");
 				channels.add(ctx.channel());
-				
+
 			}
 		});
-		
-		
+
+
 	}
-	
-	
 	@Override
-	protected void messageReceived(ChannelHandlerContext ctx, String msg)
+	protected void channelRead0(ChannelHandlerContext ctx, String msg)
 			throws Exception {
 		// Send the received message to all channels but the current one.
 		System.out.print("recv from " + "[" + ctx.channel().remoteAddress() + "]，msg=" + msg);
@@ -56,15 +54,15 @@ public class SslTwoWayServerHandler extends SimpleChannelInboundHandler<String> 
 		    ctx.close();
 		}
 	}
-	
-	
+
+
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
 		cause.printStackTrace();
 		ctx.close();
 	}
-	
-	
+
+
 
 }

@@ -7,14 +7,27 @@
     <groupId>netty.demo</groupId>
     <artifactId>NettyDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>5.0.0.Alpha2</version>
-        </dependency>
 
+
+        <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-tcnative-boringssl-static</artifactId>
+        <version>2.0.34.Final</version>
+        </dependency>
 
         <dependency>
             <groupId>joda-time</groupId>
@@ -22,11 +35,28 @@
             <version>2.10.1</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>com.madgag.spongycastle</groupId>-->
+            <!--<artifactId>bctls-jdk15on</artifactId>-->
+            <!--<version>1.58.0.0</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.madgag.spongycastle</groupId>
+            <groupId>org.bouncycastle</groupId>
             <artifactId>bctls-jdk15on</artifactId>
-            <version>1.58.0.0</version>
+            <version>1.66</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.42.Final</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>io.netty</groupId>-->
+            <!--<artifactId>netty-all</artifactId>-->
+            <!--<version>5.0.0.Alpha2</version>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
