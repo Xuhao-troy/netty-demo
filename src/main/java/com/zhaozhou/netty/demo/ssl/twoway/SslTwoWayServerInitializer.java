@@ -45,14 +45,16 @@ public class SslTwoWayServerInitializer extends ChannelInitializer<SocketChannel
         //生成服务端keystore的命令（包括Netty服务端公钥、私钥和证书）
         //keytool -genkey -alias server -keysize 2048 -validity 3650 -keyalg RSA -dname "CN=localhost" -keypass nettyDemo -storepass nettyDemo -keystore serverStore.jks
 
-
-        String keystorePath = "f:/testOpenssl/node3-ed/keystore.jks";
-        String truststorePath = "f:/testOpenssl/node3-ed/truststore.jks";
+        String keystorePath = "f:/testOpenssl/node1-ec/keystore.jks";
+        String truststorePath = "f:/testOpenssl/node1-ec/truststore.jks";
+//        String keystorePath = "f:/testOpenssl/node3-ed/keystore.jks";
+//        String truststorePath = "f:/testOpenssl/node3-ed/truststore.jks";
 
         SSLEngine engine = SslTwoWayContextFactory.getServerContext(keystorePath, truststorePath).createSSLEngine();
         engine.setUseClientMode(false);//设置服务端模式
         engine.setNeedClientAuth(true);//需要客户端验证
         pipeline.addLast("ssl", new SslHandler(engine));
+
 //        SslContext sslCtx = SslTwoWayContextFactory.getServerContextOpenSSL(keystorePath, truststorePath);
 //        pipeline.addLast("ssl", sslCtx.newHandler(sc.alloc()));
 

@@ -33,8 +33,10 @@ public class SslTwoWayClientInitializer extends ChannelInitializer<SocketChannel
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        String keystorePath = "f:/testOpenssl/node4-ed/keystore.jks";
-        String truststorePath = "f:/testOpenssl/node4-ed/truststore.jks";
+        String keystorePath = "f:/testOpenssl/node2-ec/keystore.jks";
+        String truststorePath = "f:/testOpenssl/node2-ec/truststore.jks";
+//        String keystorePath = "f:/testOpenssl/node4-ed/keystore.jks";
+//        String truststorePath = "f:/testOpenssl/node4-ed/truststore.jks";
 //        String truststorePath = "f:/testOpenssl/node4-ed/truststorewrong.jks";
 
         SSLEngine engine = SslTwoWayContextFactory.getClientContext(keystorePath, truststorePath).createSSLEngine();

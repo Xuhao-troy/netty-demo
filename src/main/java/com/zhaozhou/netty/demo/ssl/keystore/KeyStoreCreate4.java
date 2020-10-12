@@ -110,7 +110,7 @@ public class KeyStoreCreate4 {
 
             String filePath = "f:\\testOpenssl\\node4-ed\\keystore.jks";
             String alias = "node4";
-            char[] keyPassword = "keyPassword".toCharArray();
+            char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setKeyEntry(alias, privateKey, keyPassword, chain);
             ks.store(fos, keyPassword);
@@ -140,7 +140,7 @@ public class KeyStoreCreate4 {
 
             String filePath = "f:\\testOpenssl\\node4-ed\\truststore.jks";
             String alias = "node4";
-            char[] keyPassword = "keyPassword".toCharArray();
+            char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setCertificateEntry(alias, cert);
             ks.store(fos, keyPassword);

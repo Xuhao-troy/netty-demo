@@ -35,7 +35,7 @@ public final class SslTwoWayContextFactory {
     public static SSLContext getServerContext(String pkPath, String caPath) {
         if (SERVER_CONTEXT != null) return SERVER_CONTEXT;
         try {
-            char[] keyPass = "keyPassword".toCharArray();
+            char[] keyPass = "123456".toCharArray();
 
             KeyStore serverKS = loadKSfromKSFile(pkPath, keyPass);
             KeyStore serverTS = loadKSfromKSFile(caPath, keyPass);
@@ -61,7 +61,7 @@ public final class SslTwoWayContextFactory {
     public static SSLContext getClientContext(String pkPath, String caPath) {
         if (CLIENT_CONTEXT != null) return CLIENT_CONTEXT;
         try {
-            char[] keyPass = "keyPassword".toCharArray();
+            char[] keyPass = "123456".toCharArray();
 
             KeyStore clientKS = loadKSfromKSFile(pkPath, keyPass);
             KeyStore clientTS = loadKSfromKSFile(caPath, keyPass);
@@ -97,20 +97,18 @@ public final class SslTwoWayContextFactory {
         InputStream in = null;
         InputStream tIN = null;
         try {
-            KeyStore ks = KeyStore.getInstance("JKS");
-            in = new FileInputStream(pkPath);
-            ks.load(in, "123456".toCharArray());
-//            OpenSslCachingX509KeyManagerFactory kmf = new OpenSslCachingX509KeyManagerFactory(KeyManagerFactory.getInstance("SunX509"));
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
-            kmf.init(ks, "123456".toCharArray());
+            char[] keyPass = "123456".toCharArray();
 
-            TrustManagerFactory tf = null;
-            KeyStore tks = KeyStore.getInstance("JKS");
-            tIN = new FileInputStream(caPath);
-            tks.load(tIN, "123456".toCharArray());
-            tf = TrustManagerFactory.getInstance("SunX509");
-            tf.init(tks);
-            CLIENT_CONTEXT_OPENSSL = SslContextBuilder.forClient().keyManager(kmf).trustManager(tf).build();
+            KeyStore clientKS = loadKSfromKSFile(pkPath, keyPass);
+            KeyStore clientTS = loadKSfromKSFile(caPath, keyPass);
+
+            KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX", BouncyCastleJsseProvider.PROVIDER_NAME);
+            keyMgrFact.init(clientKS, keyPass);
+
+            TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX", BouncyCastleJsseProvider.PROVIDER_NAME);
+            trustMgrFact.init(clientTS);
+
+            CLIENT_CONTEXT_OPENSSL = SslContextBuilder.forClient().keyManager(keyMgrFact).trustManager(trustMgrFact).build();
         } catch (Exception e) {
             e.printStackTrace();
             throw new Error("Failed to initialize the client-side SSLContext.");
@@ -141,20 +139,18 @@ public final class SslTwoWayContextFactory {
         InputStream in = null;
         InputStream tIN = null;
         try {
-            KeyStore ks = KeyStore.getInstance("JKS");
-            in = new FileInputStream(pkPath);
-            ks.load(in, "123456".toCharArray());
-//            OpenSslCachingX509KeyManagerFactory kmf = new OpenSslCachingX509KeyManagerFactory(KeyManagerFactory.getInstance("SunX509"));
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
-            kmf.init(ks, "123456".toCharArray());
+            char[] keyPass = "123456".toCharArray();
 
-            TrustManagerFactory tf = null;
-            KeyStore tks = KeyStore.getInstance("JKS");
-            tIN = new FileInputStream(caPath);
-            tks.load(tIN, "123456".toCharArray());
-            tf = TrustManagerFactory.getInstance("SunX509");
-            tf.init(tks);
-            SERVER_CONTEXT_OPENSSL = SslContextBuilder.forServer(kmf).trustManager(tf).clientAuth(ClientAuth.REQUIRE).build();
+            KeyStore serverKS = loadKSfromKSFile(pkPath, keyPass);
+            KeyStore serverTS = loadKSfromKSFile(caPath, keyPass);
+
+            KeyManagerFactory keyMgrFact = KeyManagerFactory.getInstance("PKIX", BouncyCastleJsseProvider.PROVIDER_NAME);
+            keyMgrFact.init(serverKS, keyPass);
+
+            TrustManagerFactory trustMgrFact = TrustManagerFactory.getInstance("PKIX", BouncyCastleJsseProvider.PROVIDER_NAME);
+            trustMgrFact.init(serverTS);
+
+            SERVER_CONTEXT_OPENSSL = SslContextBuilder.forServer(keyMgrFact).trustManager(trustMgrFact).clientAuth(ClientAuth.REQUIRE).build();
         } catch (Exception e) {
             e.printStackTrace();
             throw new Error("Failed to initialize the client-side SSLContext.");

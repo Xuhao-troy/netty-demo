@@ -35,7 +35,7 @@ public class KeyStoreCreate2 {
         BouncyCastleProvider prov = new BouncyCastleProvider();
         Security.addProvider(prov);
 
-        testSignAndVerify();
+//        testSignAndVerify();
         loadFileAndCreateKeyStore();
         loadFileAndCreateTrustStore();
     }
@@ -89,16 +89,16 @@ public class KeyStoreCreate2 {
 //            char[] password = "123456".toCharArray();
             ks.load(null, null);
             //加载私钥
-            String keyPath = "f:\\testOpenssl\\node2\\node.key";
+            String keyPath = "f:\\testOpenssl\\node2-ec\\node.key";
             PrivateKey privateKey = loadPrivKeyFromFile(keyPath);
             //加载证书链
-            String nodeCertPath = "f:\\testOpenssl\\node2\\node.crt";
+            String nodeCertPath = "f:\\testOpenssl\\node2-ec\\node.crt";
             Certificate nodeCert=loadCertificateFromFile(nodeCertPath);
 
-            String agencyCertPath = "f:\\testOpenssl\\node2\\agency.crt";
+            String agencyCertPath = "f:\\testOpenssl\\node2-ec\\agency.crt";
             Certificate agencyCert=loadCertificateFromFile(agencyCertPath);
 
-            String caCertPath = "f:\\testOpenssl\\node2\\ca.crt";
+            String caCertPath = "f:\\testOpenssl\\node2-ec\\ca.crt";
             Certificate caCert=loadCertificateFromFile(caCertPath);
 
             Certificate[] chain = new X509Certificate[3];
@@ -109,7 +109,7 @@ public class KeyStoreCreate2 {
 
             // store away the key store
 
-            String filePath = "f:\\testOpenssl\\node2\\keystore.jks";
+            String filePath = "f:\\testOpenssl\\node2-ec\\keystore.jks";
             String alias = "node2";
             char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
@@ -135,11 +135,11 @@ public class KeyStoreCreate2 {
 //            char[] password = "123456".toCharArray();
             ks.load(null, null);
             //加载证书
-            String certPath = "f:\\testOpenssl\\node1\\ca.crt";
+            String certPath = "f:\\testOpenssl\\node2-ec\\ca.crt";
             Certificate cert= loadCertificateFromFile(certPath);
             // store away the key store
 
-            String filePath = "f:\\testOpenssl\\node1\\truststore.jks";
+            String filePath = "f:\\testOpenssl\\node2-ec\\truststore.jks";
             String alias = "node1";
             char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);

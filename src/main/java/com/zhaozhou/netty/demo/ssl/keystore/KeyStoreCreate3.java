@@ -111,7 +111,7 @@ public class KeyStoreCreate3 {
 
             String filePath = "f:\\testOpenssl\\node3-ed\\keystore.jks";
             String alias = "node3";
-            char[] keyPassword = "keyPassword".toCharArray();
+            char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setKeyEntry(alias, privateKey, keyPassword, chain);
             ks.store(fos, keyPassword);
@@ -141,7 +141,7 @@ public class KeyStoreCreate3 {
 
             String filePath = "f:\\testOpenssl\\node3-ed\\truststore.jks";
             String alias = "node3";
-            char[] keyPassword = "keyPassword".toCharArray();
+            char[] keyPassword = "123456".toCharArray();
             FileOutputStream fos = new FileOutputStream(filePath);
             ks.setCertificateEntry(alias, cert);
             ks.store(fos, keyPassword);
