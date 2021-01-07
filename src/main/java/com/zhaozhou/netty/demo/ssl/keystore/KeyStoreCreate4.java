@@ -33,10 +33,8 @@ public class KeyStoreCreate4 {
     public static void main(String[] args) throws GeneralSecurityException, IOException {
         BouncyCastleProvider prov = new BouncyCastleProvider();
         Security.addProvider(prov);
-
-//        testSignAndVerify();
-        loadFileAndCreateKeyStore();
-        loadFileAndCreateTrustStore();
+        String filePath="f:\\testOpenssl\\node1-ec\\node.key";
+        PrivateKey privateKey=loadPrivKeyFromFile(filePath);
     }
 
     private static void createKeyStore() throws GeneralSecurityException {

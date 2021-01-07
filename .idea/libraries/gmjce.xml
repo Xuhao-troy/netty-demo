@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="gmjce">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/resources/gmjce.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/resources/gmjsse.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
